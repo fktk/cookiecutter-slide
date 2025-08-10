@@ -15,21 +15,10 @@ footer {
 section {
   background-color: white;
   font-size: 32px;
-}
-
-section.top {
-  background-image: url(./img/logo.svg);
+  background-image: url(./.images/logo.png);
+  background-position: right 5px top 5px;
+  background-size: 80px ;
   background-repeat: no-repeat;
-  background-size: 600px;
-  background-position-x: center;
-  background-position-y: 180px;
-}
-section.top h1 {
-  color: purple; 
-  font-size: 2.8rem;
-  margin-top: 150px;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 section::after {
