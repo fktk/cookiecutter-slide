@@ -1,0 +1,42 @@
+/* themes/theme.css */
+@import "gaia";
+
+/* ブランドカラーの定義 */
+:root {
+  --brand-color: #0A2E5B;  /* ネイビー */
+  --accent-color: #2352C8; /* アクセントブルー */
+}
+
+/* ロゴを全スライドの右上に表示 */
+/* （タイトルスライドとかは除外） */
+section:not(.title_slide):not(.section_divider):not(.end_slide)::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  width: 150px;
+  height: 65px;
+  background-image: url('../.images/logo_primary.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 9999; /* 最前面に！ */
+}
+
+.metric-card {
+	background: white;
+	border-radius: 12px;
+	padding: 30px;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+	transition: all 0.3s ease;
+}
+
+.strategy-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 40px;
+}
+
+.comparison-matrix th {
+	background-color: var(--color-primary);
+	color: white;
+}
