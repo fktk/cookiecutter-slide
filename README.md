@@ -23,7 +23,7 @@
 1.  ターミナルで以下のコマンドを実行します。
 
     ```bash
-    cookiecutter gh:fktk/cookiecutter_slide
+    cookiecutter gh:fktk/cookiecutter-slide
     ```
 
 2.  プロンプトに従って、プロジェクト名（フォルダ名）を入力します。

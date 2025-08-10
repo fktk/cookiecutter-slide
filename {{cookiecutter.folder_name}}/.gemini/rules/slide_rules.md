@@ -50,9 +50,3 @@
 - Use headings to structure content
 - Break long paragraphs into bullet points
 - Add whitespace for readability
-
-## データ表示コンポーネント
-
-- **数値強調**: `.metric-card` - 重要な数値やKPIを視覚的に強調
-- **戦略グリッド**: `.strategy-grid` - 戦略や提案を2列で整理
-- **比較マトリックス**: `.comparison-matrix` - 表形式での機能比較

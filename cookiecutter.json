@@ -1,5 +1,5 @@
 {
-  "folder_name": "{{ now('local', '%Y%m%d') }}",
-  "slide_title": "Presentation Title",
-  "author": "Your Name"
+  "folder_name": "20250810_butyohokoku",
+  "author": "TK",
+  "organization": "TK"
 }
