@@ -1,8 +1,11 @@
-description = "Simplify markdown and convert to PDF with Marp"
-prompt = """
+---
+mode: 'agent'
+description: 'Simplify markdown and convert to PDF with Marp'
+---
+
 ## Context
-- Guidelines: @.gemini/rules/slide-rules.md
-- Template: @template.md
+- Guidelines: [.gemini/rules/slide-rules.md](.gemini/rules/slide-rules.md)
+- Template: [template.md](template.md)
 
 ## Your task
 
@@ -13,5 +16,3 @@ prompt = """
 5. Apply the template to the simplified content
 6. Save to a temporary file
 7. Convert to PDF using Marp CLI
-"""
-
