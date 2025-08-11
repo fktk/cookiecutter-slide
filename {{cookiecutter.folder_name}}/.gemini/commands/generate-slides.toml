@@ -1,15 +1,14 @@
-description = "Simplify markdown and generate slides"
+description = "Markdownを簡素化してスライドを生成"
 prompt = """
 ## Context
-- Guidelines: @rules/slide-rules.md
-- Template: @template.md
-- Input files: [input/*.md](input/*.md)
+- ガイドライン: [rules/slide-rules.md](rules/slide-rules.md)
+- テンプレート: [template.md](template.md)
+- 入力ファイル: [input/*.md](input/*.md)
 
-## Your task
-
-1. Read the input markdown files
-2. Read the slide guidelines
-3. Simplify the markdown content according to the guidelines
-4. Read the design template
-5. Apply the template to the simplified content
-6. Save to a temporary file
+## タスク
+1. 入力Markdownファイルを読む。
+2. スライドガイドラインを読む。
+3. ガイドラインに従ってMarkdown内容を簡素化（冗長表現削除・要約・箇条書き化・1スライド1主題）。
+4. デザインテンプレートを読む。
+5. 簡素化後コンテンツへテンプレートを適用（必要なfront-matterと区切りを整える）。
+6. 一時ファイル (例: `output/slides.md`) に保存する。
