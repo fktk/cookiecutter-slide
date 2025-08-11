@@ -12,7 +12,6 @@
 - `{{cookiecutter.folder_name}}/template.md`: 先頭 front‑matter 必須 (`marp: true`, `theme: myTheme`) を保持。
 - `{{cookiecutter.folder_name}}/themes/theme.css`: 独自テーマ。`/* @theme myTheme */` と `@import "gaia"` 維持。背景ロゴは `./.images/logo.png`。
 - `{{cookiecutter.folder_name}}/GEMINI.md`: 思考は英語 / 応答は日本語 / 絵文字禁止 / 日本語余分スペース禁止の運用規則。
-- `.github/prompts/generate-slides.prompt.md`: 最小エージェントプロンプト (将来 `.gemini/commands/generate-slides.md` へ発展想定)。
 - ルート `README.md`: インストール & 生成手順。生成ディレクトリ内 `README.md` が実行手順詳細。
 
 ### ワークフロー留意点 (自動化/保全)
