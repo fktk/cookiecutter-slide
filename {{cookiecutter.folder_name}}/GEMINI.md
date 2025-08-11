@@ -1,59 +1,63 @@
-# AI コーディングエージェント指針
+# AIコーディングエージェント指針
 
-本リポジトリは「Cookiecutter テンプレート化されたプレゼン資料生成環境」の雛形ディレクトリです。目的は: Markdown + テンプレート + ルールを用いて Gemini (LLM) と Marp CLI により PDF スライドを一貫生成すること。ここに記すのはこのテンプレート特有の知識のみです。汎用的アドバイスは不要。
+本テンプレートは Markdown 原稿 (`input/`) をルール (`rules/slide_rules.md`, `rules/artifact_rules.md`) とテンプレート (`template.md`) に基づき GeminiまたはGitHub copilot + Marp CLI で PDF 化する最小構成。ここでは現状ディレクトリ構成に即した運用知識のみを記す。
 
-## 全体像 (Big Picture)
-- 入力: `input/*.md` (ユーザが書く原稿)。
-- 変換ルール: `.gemini/commands/generate-slides.toml` (Gemini CLI コマンド) と `.gemini/rules/slide_rules.md` (スライド最適化ルール) — ※これらファイルは生成後環境に存在する想定。テンプレートでは README が手順と役割を説明。
-- テーマ: `themes/theme.css` (Marp テーマ + ロゴ背景 + ページネーション生成)。
-- テンプレート例: `template.md` (YAML front‑matter: `marp: true`, `theme: myTheme`, `paginate: true` など)。
-- 出力: `output/*.pdf` (Marp CLI により生成)。
-- 静的アセット: `.images/` (ロゴ等) — デフォルト参照ファイル `logo.png`。README にしたがい存在しない場合は追加が必要。
+## ディレクトリ実態
+- 原稿: `input/*.md`
+- ルール: `rules/slide_rules.md`, `rules/artifact_rules.md`
+- Gemini コマンド定義: `.gemini/commands/*.toml` (主: `generate-slides.toml`)
+- GitHub copilot コマンド定義: `.github/prompts/*.prompt.md`
+- テーマ: `.themes/theme.css` (旧説明の `themes/` ではなく先頭ドット付き)
+- テンプレート例: `template.md`
+- 中間生成/作業: `artifact/` (スライド整形中間 `artifact_番号.md` 等を置く想定)
+- 最終出力: `output/` (PDF 他)
+- 画像資産: `.images/` (デフォルト `logo.png`)
+- 補助リソース: `resources/`
 
-## 開発・利用ワークフロー
-1. Markdown 原稿作成: `input/your.md` (見出しは `#`/`##` 区切り、ページ区切りは `---`)。
-2. 生成実行: `gemini -c .gemini/commands/generate-slides.md input/your.md` をプロジェクトルートで実行。
-3. Gemini コマンドは (a) 原稿読込 → (b) ルール適用 (`.gemini/rules/slide_rules.md`) → (c) Marp CLI 呼び出し (テーマ `themes/theme.css`) → (d) `output/` に PDF 書出。
-4. テーマ調整: `themes/theme.css` を編集 (背景画像パス, 色, フッター, ページネーション)。
+## 生成フロー (標準)
+1. 原稿作成: `input/xxx.md` 報告の目的、相手、内容などを列挙したテキストファイルを作成。
+2. 報告骨子を作成: Gemini CLIまたはGitHub copilotのカスタムコマンド(`/generate-artifact`)をプロジェクトルートで実行。
+3. コマンド内ロジック: 原稿読込 → ルール適用 (`rules/artifact_rules.md`) → 出力ファイル生成(`output/artifact.md`)
+4. 報告資料を作成: Gemini CLIまたはGitHub copilotのカスタムコマンド(`/generate-slides`)をプロジェクトルートで実行。
+5. コマンド内ロジック: 報告骨子読込 → ルール適用 (`rules/slide_rules.md`) → テンプレ適用 (`template.md`) → 出力ファイル生成(`output/slide.md`)
+6. 報告資料をレビュー: Gemini CLIまたはGitHub copilotのカスタムコマンド(`/review`)をプロジェクトルートで実行。
+7. テーマ変更時は再実行必須。
 
-## プロジェクト固有ルール (GEMINI.md 抜粋反映)
-- 絵文字禁止。出力/編集提案でも使用しない。
-- 日本語文章内に不要なスペースを挿入しない (「Claude Code入門」のように)。
-- 思考は英語/最終出力は日本語 (エージェント内部)。
-- タスク完了時に完了通知コメント (本ガイドラインに準拠する他ツール連携時)。
+## 修正すべき既知差異 (自動化時に留意)
+- 中間ファイル配置は `artifact/` を優先。`output/` は最終成果物専用とする。
 
-## パターン / コンベンション
-- スライド境界: Markdown の `---` でページ分割 (Marp 標準)。
-- フロントマター必須キー: `marp: true`, `theme: myTheme`, `paginate: true`。`footer:` `author:` は Cookiecutter 変数で埋め込まれる。
-- ページ番号は `theme.css` の `section::after` で自動挿入, 変更は CSS の `content` プロパティを編集。
-- ロゴ画像パスは `themes/theme.css` 内 `background-image: url(./.images/logo.png);` — 変更する場合は README 指示通りファイル名/パス同期。
-- 相対パス前提: 生成時はプロジェクトルートカレントでツールを実行する設計。
+## Front‑matter 必須キー
+`marp: true`, `theme: myTheme`, `paginate: true`。必要に応じて `author:` `footer:` を付与。欠落時はテンプレート適用で補完する方針。
 
-## 変更時の注意
-- `theme.css` 改変後は再生成が必要。キャッシュは特段扱っていない想定。
-- `template.md` を直接編集しても既存出力には影響しない; 新規原稿がその構造を参照。
-- Cookiecutter 変数 (`{{cookiecutter.folder_name}}`, `{{cookiecutter.organization}}`, `{{cookiecutter.author}}`) はテンプレート展開時に具体値へ置換される。生成後に生ファイル内へ直接埋め込まれているか確認してから追加変更。
+## スライド内容整形方針 (概要)
+- 1スライド1メッセージ。
+- 冗長語削除/平易化/箇条書き短文化。
+- 過剰項目 (箇条書き >7) は分割。
+- タイトル30全角以内、サブタイトル15全角以内。
 
-## よくあるタスク例 (エージェント支援)
-| 目的 | 手順 (要点) |
-|------|-------------|
-| 新しいスライド作成 | `input/new.md` を作り front‑matter 省略可 (コマンド側でテンプレート適用想定) / 明示するなら `template.md` をコピー |
-| テーマ色変更 | `themes/theme.css` の `background-color` / 線色を編集 |
-| ロゴ差替え | `.images/logo.png` を差し替え (名称変えるなら CSS の url を同期) |
-| ページ番号書式変更 | `section::after { content: "Page " attr(...); }` を修正 |
+詳細規則は `rules/slide_rules.md` を常に優先。
 
-## 追加で探すべきファイル (存在前提) が無い場合
-`.gemini/` ディレクトリが無い状態ならユーザ環境未初期化。必要なら以下のプレースホルダ生成を提案:
-- `.gemini/commands/generate-slides.toml`
-- `.gemini/rules/slide_rules.md`
-  (README 記述を元に雛形案内)
+## 典型タスクと行動
+- 新規原稿: `input/new.md` 作成 (必要なら `template.md` 参照)。
+- テーマ調整: `.themes/theme.css` 編集後、再生成。
+- ロゴ差替え: `.images/logo.png` 差替え。ファイル名変更時は CSS の `background-image` を同期。
+- ページ番号/フッター変更: `.themes/theme.css` の該当セレクタを編集。
+
+## 変更時注意
+- `template.md` 変更は今後の新規原稿へ影響、既存生成済み PDF には影響なし。
+- Cookiecutter 変数は展開後ファイルに埋め込み済みか確認し、残存プレースホルダは必要なら置換。
 
 ## 禁止/避ける事項
-- 汎用的ベストプラクティスの羅列 (テスト戦略等) — このテンプレートはスライド生成中心。
-- 絵文字使用。
-- 日本語内の不自然スペース。
+- 汎用的ベストプラクティス羅列。
+- 絵文字。
+- 不自然スペース混入。
 
-## 不確定点の扱い
-- Marp CLI 呼び出しコマンド詳細が未掲示: 追加情報が必要な場合だけユーザへ確認し冗長質問は避ける。
+## エージェント動作ガイド
+- 最小差分編集を原則。
+- パス/ファイル不整合を検知したら修正提案→即適用 (危険性低の場合)。
+- 追加情報が欠ける場合のみ簡潔質問。
 
-以上を基準に、このリポジトリでの自動化/編集提案を行うこと。改善余地や未定義領域があれば差分のみを簡潔に質問してから進める。
+## 不確定点
+- Marp 実行コマンド詳細（ラッパースクリプト等）が別途存在するならその検出後に追記。
+
+以上を基準に自動化/編集を行うこと。差分起点での改善を継続する。
