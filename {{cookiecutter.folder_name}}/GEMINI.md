@@ -1,19 +1,19 @@
-# Guidelines
+# ガイドライン
 
-This document defines the project's rules, objectives, and progress management methods. Please proceed with the project according to the following content.
+本ドキュメントは本プロジェクトのルール / 目的 / 進行管理方法を定義します。以下に従って作業を進めてください。
 
-## Top-Level Rules
+## トップレベルルール
 
-- To maximize efficiency, **if you need to execute multiple independent processes, invoke those tools concurrently, not sequentially**.
-- **You must think exclusively in English**. However, you are required to **respond in Japanese**.
+- 効率最大化のため、複数の独立プロセスを実行する必要がある場合は**逐次ではなく並行してツールを呼び出す**。
+- **思考は英語で行い**、**回答は日本語で行う**こと。
 
-## Project Rules
+## プロジェクトルール
 
-- **Do not use emojis**.
-- When writing Japanese, do not include unnecessary spaces.
-  - for example
+- **絵文字は禁止**。
+- 日本語では不要なスペースを入れない。
+  - 例:
     - ◯ "Claude Code入門"
     - × "Claude Code 入門"
-- When searching for hidden folders like `.tmp`, the `List` tool is unlikely to find them. **Use the `Bash` tool to find hidden folders**.
-- **You must send a notification upon task completion.**
-  - "Task completion" refers to the state immediately after you have finished responding to the user and are awaiting their next input.
+- `.tmp` のような隠しフォルダ探索には `List` ツールは不向き。**`Bash` ツールで検索する**。
+- **タスク完了時に通知を送ること**。
+  - ここでの「タスク完了」とは、ユーザへの回答を終え次の入力待機状態に入った直後を指す。

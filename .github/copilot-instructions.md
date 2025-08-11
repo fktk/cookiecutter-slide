@@ -10,15 +10,15 @@
 ### 主要ファイル / 役割
 - `cookiecutter.json`: 変数 `folder_name`, `author`, `organization` 定義。追加時はここ→テンプレート内で `{{cookiecutter.var}}`。
 - `{{cookiecutter.folder_name}}/template.md`: 先頭 front‑matter 必須 (`marp: true`, `theme: myTheme`) を保持。
-- `{{cookiecutter.folder_name}}/themes/theme.css`: 独自テーマ。`/* @theme myTheme */` と `@import "gaia"` 維持。`h2` の `fomt-size` は誤記 (修正候補: `font-size`). 背景ロゴは `./.images/logo.png`。
+- `{{cookiecutter.folder_name}}/themes/theme.css`: 独自テーマ。`/* @theme myTheme */` と `@import "gaia"` 維持。背景ロゴは `./.images/logo.png`。
 - `{{cookiecutter.folder_name}}/GEMINI.md`: 思考は英語 / 応答は日本語 / 絵文字禁止 / 日本語余分スペース禁止の運用規則。
 - `.github/prompts/generate-slides.prompt.md`: 最小エージェントプロンプト (将来 `.gemini/commands/generate-slides.md` へ発展想定)。
 - ルート `README.md`: インストール & 生成手順。生成ディレクトリ内 `README.md` が実行手順詳細。
 
 ### ワークフロー留意点 (自動化/保全)
 1. 原稿: `input/` に Markdown 下書き配置。
-2. 想定コマンド: `gemini -c .gemini/commands/generate-slides.md input/<file>.md`。
-3. コマンド側で `.gemini/rules/slide_rules.md` を適用し構造化 → Marp 連携して PDF 出力。
+2. 想定コマンド: `gemini -c .gemini/commands/generate-slides.toml input/<file>.md`。
+3. コマンド側で `.gemini/rules/slide_rules.toml` を適用し構造化 → Marp 連携して PDF 出力。
 4. テーマ・フッター値は Cookiecutter 変数依存。変数参照を文字列に潰さない。
 
 ### 変数追加手順
