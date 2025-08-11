@@ -1,52 +1,52 @@
-# Slide Simplification Guidelines
+# スライド簡素化ガイドライン
 
-## Core Principles
+## コア原則
 
-### 1. One Slide, One Message
-- Each slide should convey a single, clear message
-- Avoid information overload
-- Supplement details verbally or in separate materials
+### 1. 1スライド1メッセージ
+- 各スライドは単一で明確なメッセージのみを伝える
+- 情報過多を避ける
+- 詳細は口頭または別資料で補足
 
-### 2. Title Rules (`##`)
-- **Maximum 30 full-width characters** 
-- **Must fit on one line** - wrapping breaks the layout
-- Keep titles concise and clear
+### 2. タイトル規則 (`##`)
+- **最大30全角文字**
+- **必ず1行に収める** 改行はレイアウトを崩す
+- 簡潔かつ明瞭に
 
-### 3. Content Guidelines
+### 3. コンテンツ指針
 
-#### Text and Bullet Points
-- **Characters per line:** 35-45 full-width characters
-- **Bullet points per slide:** 5-7 items maximum
-- **Lines per bullet point:** 1-2 lines ideally
-- **Paragraph lines:** 5-7 lines maximum
+#### テキスト / 箇条書き
+- **1行の文字数:** 35〜45全角目安
+- **1スライドの箇条書き数:** 最大5〜7項目
+- **1項目の行数:** 理想1〜2行
+- **段落行数:** 最大5〜7行
 
-#### Subtitle Rules (`###`)
-- Maximum 15 full-width characters
-- Use for section breaks or sub-headings only
+#### サブタイトル規則 (`###`)
+- 最大15全角文字
+- セクション区切り/小見出しに限定使用
 
-#### Tables
-- **Columns:** 3-4 maximum
-- Keep cell content concise
-- Consider bullet points for complex data
+#### 表 (Tables)
+- **列数:** 最大3〜4列
+- セル内容は簡潔に
+- 複雑な比較は箇条書きへ分解を検討
 
-## Simplification Strategies
+## 簡素化ストラテジー
 
-### 1. Remove Redundancy
-- Eliminate repetitive phrases
-- Remove obvious statements
-- Cut unnecessary transitional words
+### 1. 冗長排除
+- 繰り返し表現を削除
+- 自明な記述を削除
+- 不要な接続語を削る
 
-### 2. Use Clear Structure
-- Start with the most important point
-- Use parallel construction in lists
-- Group related items together
+### 2. 明確な構造
+- 最重要ポイントを先頭に配置
+- 箇条書きは並列構造を統一
+- 関連項目をグルーピング
 
-### 3. Simplify Language
-- Replace complex terms with simple ones
-- Use active voice
-- Avoid jargon unless necessary
+### 3. 言語単純化
+- 難解語を平易語へ置換
+- 能動態を優先
+- 不要な専門用語を避ける (必要最低限)
 
-### 4. Visual Hierarchy
-- Use headings to structure content
-- Break long paragraphs into bullet points
-- Add whitespace for readability
+### 4. 視覚的ヒエラルキー
+- 見出しで階層を明確化
+- 長文は箇条書きへ分割
+- 余白を確保し可読性向上
