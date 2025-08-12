@@ -1,1 +1,3 @@
 **/contents.md
+./{{cookiecutter.folder_name}}/artifact/*md
+./{{cookiecutter.folder_name}}/output/*md
