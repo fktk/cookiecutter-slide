@@ -1,17 +1,17 @@
 ---
 mode: 'agent'
-description: '報告骨子を簡素化してスライドを生成'
+description: '報告骨子を簡素化してスライドを生成する'
 ---
 
 ## Context
-- ガイドライン: [guidance/slide_rules.md](guidance/slide_rules.md)
-- テンプレート: [template.md](template.md)
-- 入力ファイル: [artifact/*.md](artifact/*.md)
+- [報告の概要、骨子](artifact/*.md)
+- [ガイドライン](guidance/slide_rules.md)
+- [テンプレート](template.md)
 
 ## タスク
-1. 入力Markdownファイルを読む。
-2. スライドガイドラインを読む。
-3. ガイドラインに従ってMarkdown内容を簡素化（冗長表現削除・要約・箇条書き化・1スライド1主題）。
+1. 報告の概要、骨子を読む。
+2. ガイドラインを読む。
+3. ガイドラインに従って報告用スライドを生成する。
 4. テンプレートを読む。
-5. 簡素化後コンテンツへテンプレートを適用（Marpで出力するために必要なfront-matterを用意し、区切りを整える）。
+5. テンプレートに従ってスライドを構成する。(Marpで出力するために必要なfront-matterはテンプレートに含まれる)
 6. ファイル (`output/slides.md`) に保存する。
