@@ -1,15 +1,15 @@
 description = "Markdownを簡素化してスライドを生成"
 prompt = """
 ## Context
-- ガイドライン: [artifact/slide_rules.md](artifact/slide_rules.md)
+- ガイドライン: [guidance/slide_rules.md](guidance/slide_rules.md)
 - テンプレート: [template.md](template.md)
-- 入力ファイル: [input/*.md](input/*.md)
+- 入力ファイル: [artifact/*.md](artifact/*.md)
 
 ## タスク
 1. 入力Markdownファイルを読む。
 2. スライドガイドラインを読む。
-3. ガイドラインに従いMarkdownを簡素化（冗長削除 / 要約 / 箇条書き最適化 / 1スライド1主題）。
+3. ガイドラインに従ってMarkdown内容を簡素化（冗長表現削除・要約・箇条書き化・1スライド1主題）。
 4. テンプレートを読む。
-5. 必須front-matter補完しテンプレート適用。`---` でページ区切り調整。
-6. 中間結果を `artifact/slides.md` に保存。
+5. 簡素化後コンテンツへテンプレートを適用（Marpで出力するために必要なfront-matterを用意し、区切りを整える）。
+6. ファイル (`output/slides.md`) に保存する。
 """
