@@ -1,10 +1,10 @@
 # AIコーディングエージェント指針
 
-本テンプレートは Markdown 原稿 (`input/`) をルール (`rules/slide_rules.md`, `rules/artifact_rules.md`) とテンプレート (`template.md`) に基づき GeminiまたはGitHub copilot + Marp CLI で PDF 化する最小構成。ここでは現状ディレクトリ構成に即した運用知識のみを記す。
+本テンプレートは Markdown 原稿 (`input/`) をルール (`rules/slide_rules.md`, `rules/artifact_rules.md`) とテンプレート (`template.md`) に基づき GeminiまたはGitHub copilot + Marp CLI でスライド化する最小構成。ここでは現状ディレクトリ構成に即した運用知識のみを記す。
 
 ## ディレクトリ実態
 - 原稿: `input/*.md`
-- ルール: `rules/slide_rules.md`, `rules/artifact_rules.md`
+- ルール: `guidance/slide_rules.md`, `guidance/artifact_rules.md`
 - Gemini コマンド定義: `.gemini/commands/*.toml` (主: `generate-slides.toml`)
 - GitHub copilot コマンド定義: `.github/prompts/*.prompt.md`
 - テーマ: `.themes/theme.css` (旧説明の `themes/` ではなく先頭ドット付き)
@@ -12,14 +12,13 @@
 - 中間生成/作業: `artifact/` (スライド整形中間 `artifact_番号.md` 等を置く想定)
 - 最終出力: `output/` (PDF 他)
 - 画像資産: `.images/` (デフォルト `logo.png`)
-- 補助リソース: `resources/`
 
 ## 生成フロー (標準)
 1. 原稿作成: `input/xxx.md` 報告の目的、相手、内容などを列挙したテキストファイルを作成。
 2. 報告骨子を作成: Gemini CLIまたはGitHub copilotのカスタムコマンド(`/generate-artifact`)をプロジェクトルートで実行。
-3. コマンド内ロジック: 原稿読込 → ルール適用 (`rules/artifact_rules.md`) → 出力ファイル生成(`output/artifact.md`)
+3. コマンド内ロジック: 原稿読込 → ルール適用 (`guidance/artifact_rules.md`) → 出力ファイル生成(`output/artifact.md`)
 4. 報告資料を作成: Gemini CLIまたはGitHub copilotのカスタムコマンド(`/generate-slides`)をプロジェクトルートで実行。
-5. コマンド内ロジック: 報告骨子読込 → ルール適用 (`rules/slide_rules.md`) → テンプレ適用 (`template.md`) → 出力ファイル生成(`output/slide.md`)
+5. コマンド内ロジック: 報告骨子読込 → ルール適用 (`guidance/slide_rules.md`) → テンプレ適用 (`template.md`) → 出力ファイル生成(`output/slide.md`)
 6. 報告資料をレビュー: Gemini CLIまたはGitHub copilotのカスタムコマンド(`/review`)をプロジェクトルートで実行。
 7. テーマ変更時は再実行必須。
 
@@ -35,7 +34,7 @@
 - 過剰項目 (箇条書き >7) は分割。
 - タイトル30全角以内、サブタイトル15全角以内。
 
-詳細規則は `rules/slide_rules.md` を常に優先。
+詳細規則は `guidance/slide_rules.md` を常に優先。
 
 ## 典型タスクと行動
 - 新規原稿: `input/new.md` 作成 (必要なら `template.md` 参照)。

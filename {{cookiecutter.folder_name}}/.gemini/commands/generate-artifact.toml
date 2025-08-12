@@ -1,8 +1,5 @@
----
-mode: 'agent'
-description: 'コンテンツを読んで、報告の骨子を生成'
----
-
+description = "コンテンツを読んで、報告の骨子を生成"
+prompt = """
 ## Context
 - ガイドライン: [guidance/artifact_rules.md](guidance/artifact_rules.md)
 - コンテンツ: [input/*.md](input/*.md)
@@ -12,3 +9,4 @@ description: 'コンテンツを読んで、報告の骨子を生成'
 2. ガイドラインを読む。
 3. ガイドラインに従って報告骨子のMarkdownを生成。
 6. ファイル (`artifact/artifact_(番号).md`) に保存する。(番号は自動で付与)
+"""

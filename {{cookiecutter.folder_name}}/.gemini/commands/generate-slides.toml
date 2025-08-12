@@ -1,7 +1,7 @@
 description = "Markdownを簡素化してスライドを生成"
 prompt = """
 ## Context
-- ガイドライン: [rules/slide_rules.md](rules/slide_rules.md)
+- ガイドライン: [artifact/slide_rules.md](artifact/slide_rules.md)
 - テンプレート: [template.md](template.md)
 - 入力ファイル: [input/*.md](input/*.md)
 

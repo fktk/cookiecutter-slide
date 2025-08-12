@@ -1,13 +1,13 @@
 # プレゼンテーション資料テンプレート (`{{cookiecutter.folder_name}}`)
 
-Markdown 原稿 + ルール + テンプレートを Gemini / Copilot + Marp CLI で PDF スライド化する最小構成です。
+Markdown 原稿 + ガイダンス + テンプレートを Gemini / Copilot + Marp CLI でスライド化する最小構成です。
 
 ## ディレクトリ概要
 - 原稿: `input/*.md`
-- ルール: `rules/slide_rules.md` (簡素化ガイド)
+- ルール: `guidance/slide_rules.md` (簡素化ガイド)
 - テンプレート: `template.md`
 - テーマ: `.themes/theme.css`
-- 中間生成: `artifact/` (整形途中の `slides.md` など)
+- 中間生成: `artifact/` (整形途中の `artifact.md` など)
 - 出力: `output/` (最終 PDF 等)
 - 画像: `.images/logo.png`
 
@@ -27,7 +27,7 @@ gemini -c .gemini/commands/generate-slides.toml input/your.md
 
 処理内容 (generate-slides):
 1. 入力Markdown読込。
-2. `rules/slide_rules.md` を適用し簡素化 (冗長削除/1スライド1メッセージ化)。
+2. `guidance/slide_rules.md` を適用し簡素化 (冗長削除/1スライド1メッセージ化)。
 3. `template.md` の front‑matter を補完。
 4. 整形結果を `artifact/slides.md` へ出力。
 
@@ -50,7 +50,7 @@ marp --theme .themes/theme.css --pdf artifact/slides.md -o output/slides.pdf
 - 1スライド1メッセージ / 箇条書き 5〜7 項目以内。
 - タイトル 30 全角以内 / サブタイトル 15 全角以内。
 - 不要な冗長語・重複を削除し簡潔化。
-詳細は `rules/slide_rules.md` を参照。
+詳細は `guidance/slide_rules.md` を参照。
 
 ## よくある変更
 | 目的 | 操作 |

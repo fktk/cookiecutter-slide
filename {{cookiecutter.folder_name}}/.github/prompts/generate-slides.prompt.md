@@ -4,7 +4,7 @@ description: '報告骨子を簡素化してスライドを生成'
 ---
 
 ## Context
-- ガイドライン: [rules/slide_rules.md](rules/slide_rules.md)
+- ガイドライン: [guidance/slide_rules.md](guidance/slide_rules.md)
 - テンプレート: [template.md](template.md)
 - 入力ファイル: [artifact/*.md](artifact/*.md)
 
