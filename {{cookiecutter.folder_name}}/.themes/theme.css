@@ -2,24 +2,38 @@
 
 @import "gaia";
 
+section {
+  font-family: "Meiryo", "MS PGothic", sans-serif;
+  font-size: 32px;
+  line-height: 1.4;
+
+  background-color: white;
+  background-image: url(./.images/logo.png);
+  background-position: right 5px top 5px;
+  background-size: 80px ;
+  background-repeat: no-repeat;
+}
+
 section::after,
 footer {
   color: white;
-  background-color: #C29DC8;
+  background-color: #003366;
   height: 50px;
   margin-bottom: 0px;
   font-size: 75%;
   padding: 0px 20px 0px 20px;
 }
 
-section {
-  background-color: white;
-  font-size: 32px;
-  background-image: url(./.images/logo.png);
-  background-position: right 5px top 5px;
-  background-size: 80px ;
-  background-repeat: no-repeat;
+footer::after {
+  content: "confidential";
+  position: absolute;
+  top: 0px;
+  left: 800px;
+  color: red;
+  font-style: italic;
+  font-size: 28px;
 }
+
 
 section::after {
   content: "Page " attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
@@ -39,7 +53,7 @@ h2::after {
   position: absolute;
   left: 0px;
   bottom: 8px;
-  width: 100%;
-  height: 2px;
+  width: 1100px;
+  height: 1px;
   background-color: black;
 }

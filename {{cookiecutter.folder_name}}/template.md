@@ -6,7 +6,9 @@ author: {{cookiecutter.author}}
 paginate: true
 ---
 
-# Title
+# 報告タイトル
+
+{{cookiecutter.author}}
 
 ---
 
